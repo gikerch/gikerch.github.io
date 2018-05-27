@@ -21,10 +21,8 @@
   <header>
     <h2 class="entry-title">
       <a href="https://gikerch.github.io/first-post.html" rel="bookmark"
-         title="Permalink to First Post">First Post</a></h2>
- Translations: 
-<a href="https://gikerch.github.io/first-post.html">chinese (simplified)</a>
-
+         title="Permalink to 回归及其Python实现">回归及其Python实现</a></h2>
+ 
   </header>
   <footer class="post-info">
     <time class="published" datetime="2016-06-08T20:00:00+02:00">
@@ -1012,7 +1010,170 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="First-post!">First post!<a class="anchor-link" href="#First-post!">¶</a></h1><p>This will be the first post in our new Pelican blog! You can add any code or markdown cells to this Jupyter notebook, and they will be rendered on your blog.</p>
+<h1 id="模型">模型<a class="anchor-link" href="#模型">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+h_\theta(x^{(i)}) &amp;= \theta_0 + \theta_1x_1+ \theta_2 x_2 +\theta_n x_n\\
+&amp;=(x^{(i)})^T \theta
+\end{align}
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="学习策略">学习策略<a class="anchor-link" href="#学习策略">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最小化训练样本的真实值与预测值的误差</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>目标函数：
+$$J(\theta)=\frac {1}{2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其中，<code>m</code>为训练样本数量</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><a href="https://millearninggroup.github.io/Stanford-CS229-CN/translation/cs229-notes1-cn/">基于极大似然估计的推导</a></strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="学习算法">学习算法<a class="anchor-link" href="#学习算法">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="正规方程">正规方程<a class="anchor-link" href="#正规方程">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\theta= (X^TX )^{-1}X^T\overset{\rightarrow} y$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="梯度下降">梯度下降<a class="anchor-link" href="#梯度下降">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>代价函数偏导数的推导：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假设只有一个样本(x,y)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="" src="https://millearninggroup.github.io/Stanford-CS229-CN/assets/image/notes1-LMS-1.jpg" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>推广到 <code>m</code> 个样本的偏导数：
+$$\frac{\partial}{\partial \theta_j}J(\theta)= \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python实现">Python实现<a class="anchor-link" href="#Python实现">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="回归基类">回归基类<a class="anchor-link" href="#回归基类">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1021,20 +1182,134 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">Regression</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">""" Base regression model. Models the relationship between a scalar dependent variable y and the independent </span>
+<span class="sd">    variables X. </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_iterations</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_iterations</span> <span class="o">=</span> <span class="n">n_iterations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
 
-<span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">initialize_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">):</span>
+        <span class="sd">""" Initialize weights randomly [-1/N, 1/N] """</span>
+        <span class="n">limit</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1"># Insert constant ones for bias weights</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_weights</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Do gradient descent for n_iterations</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_iterations</span><span class="p">):</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+            <span class="c1"># Calculate l2 loss</span>
+            <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+            <span class="c1"># Gradient of l2 loss w.r.t w</span>
+            <span class="n">grad_w</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+            <span class="c1"># Update the weights</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grad_w</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="c1"># Insert constant ones for bias weights</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="正则化">正则化<a class="anchor-link" href="#正则化">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>4</pre>
+<pre>2.2360679774997898</pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">l1_regularization</span><span class="p">():</span>
+    <span class="sd">""" Regularization for Lasso Regression """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+    
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">l2_regularization</span><span class="p">():</span>
+    <span class="sd">""" Regularization for Ridge Regression """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+    
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span>  <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">w</span>
+
+<span class="k">class</span> <span class="nc">l1_l2_regularization</span><span class="p">():</span>
+    <span class="sd">""" Regularization for Elastic Net Regression """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span> <span class="o">=</span> <span class="n">l1_ratio</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="n">l1_contr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">l2_contr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">l1_contr</span> <span class="o">+</span> <span class="n">l2_contr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="n">l1_contr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">l2_contr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">l1_contr</span> <span class="o">+</span> <span class="n">l2_contr</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="线性回归">线性回归<a class="anchor-link" href="#线性回归">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1043,90 +1318,963 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">""".</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    gradient_descent: boolean</span>
+<span class="sd">        True or false depending if gradient descent should be used when training. If </span>
+<span class="sd">        false then we use batch optimization by least squares.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">gradient_descent</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gradient_descent</span> <span class="o">=</span> <span class="n">gradient_descent</span>
+        <span class="c1"># No regularization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="n">n_iterations</span><span class="p">,</span>
+                                            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1"># If not gradient descent =&gt; Least squares approximation of w</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradient_descent</span><span class="p">:</span>
+            <span class="c1"># Insert constant ones for bias weights</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Calculate weights by least squares (using Moore-Penrose pseudoinverse)</span>
+            <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+            <span class="n">X_sq_reg_inv</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">X_sq_reg_inv</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lasso回归">Lasso回归<a class="anchor-link" href="#Lasso回归">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">LassoRegression</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">"""Linear regression model with a regularization factor which does both variable selection </span>
+<span class="sd">    and regularization. Model that tries to balance the fit of the model with respect to the training </span>
+<span class="sd">    data and the complexity of the model. A large regularization factor with decreases the variance of </span>
+<span class="sd">    the model and do para.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    reg_factor: float</span>
+<span class="sd">        The factor that will determine the amount of regularization and feature</span>
+<span class="sd">        shrinkage. </span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">reg_factor</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">l1_regularization</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">reg_factor</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LassoRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">,</span> 
+                                            <span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="岭回归">岭回归<a class="anchor-link" href="#岭回归">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">RidgeRegression</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">"""Also referred to as Tikhonov regularization. Linear regression model with a regularization factor.</span>
+<span class="sd">    Model that tries to balance the fit of the model with respect to the training data and the complexity</span>
+<span class="sd">    of the model. A large regularization factor with decreases the variance of the model.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    reg_factor: float</span>
+<span class="sd">        The factor that will determine the amount of regularization and feature</span>
+<span class="sd">        shrinkage. </span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg_factor</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">l2_regularization</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">reg_factor</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RidgeRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">,</span> 
+                                            <span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ElasticNet回归">ElasticNet回归<a class="anchor-link" href="#ElasticNet回归">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">ElasticNet</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">""" Regression where a combination of l1 and l2 regularization are used. The</span>
+<span class="sd">    ratio of their contributions are set with the 'l1_ratio' parameter.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    reg_factor: float</span>
+<span class="sd">        The factor that will determine the amount of regularization and feature</span>
+<span class="sd">        shrinkage. </span>
+<span class="sd">    l1_ration: float</span>
+<span class="sd">        Weighs the contribution of l1 and l2 regularization.</span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg_factor</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> 
+                <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">l1_l2_regularization</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">reg_factor</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="n">l1_ratio</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ElasticNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">,</span> 
+                                        <span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="多项式回归">多项式回归<a class="anchor-link" href="#多项式回归">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">class</span> <span class="nc">PolynomialRegression</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">"""Performs a non-linear transformation of the data before fitting the model</span>
+<span class="sd">    and doing predictions which allows for doing non-linear regression.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    degree: int</span>
+<span class="sd">        The degree of the polynomial that the independent variable X will be transformed to.</span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="c1"># No regularization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="n">n_iterations</span><span class="p">,</span>
+                                                <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="多项式岭回归">多项式岭回归<a class="anchor-link" href="#多项式岭回归">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">PolynomialRidgeRegression</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+    <span class="sd">"""Similar to regular ridge regression except that the data is transformed to allow</span>
+<span class="sd">    for polynomial regression.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    degree: int</span>
+<span class="sd">        The degree of the polynomial that the independent variable X will be transformed to.</span>
+<span class="sd">    reg_factor: float</span>
+<span class="sd">        The factor that will determine the amount of regularization and feature</span>
+<span class="sd">        shrinkage. </span>
+<span class="sd">    n_iterations: float</span>
+<span class="sd">        The number of training iterations the algorithm will tune the weights for.</span>
+<span class="sd">    learning_rate: float</span>
+<span class="sd">        The step length that will be used when updating the weights.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">reg_factor</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">gradient_descent</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">l2_regularization</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">reg_factor</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRidgeRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">,</span> 
+                                                        <span class="n">learning_rate</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRidgeRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">PolynomialRidgeRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="测试用例">测试用例<a class="anchor-link" href="#测试用例">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="模型训练">模型训练<a class="anchor-link" href="#模型训练">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">PolynomialRidgeRegression</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">reg_factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="学习曲线">学习曲线<a class="anchor-link" href="#学习曲线">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Training error plot</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">training_errors</span><span class="p">)</span>
+<span class="n">training</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">training_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Training Error"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">training</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Error Plot"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Mean Squared Error'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iterations'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>(array([ 2.,  1.,  1.,  0.,  2.,  0.,  1.,  0.,  0.,  2.]),
- array([  1. ,   1.9,   2.8,   3.7,   4.6,   5.5,   6.4,   7.3,   8.2,
-          9.1,  10. ]),
- &lt;a list of 10 Patch objects&gt;)</pre>
-</div>
-</div>
 <div class="output_area"><div class="prompt"></div>
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
+RrbuqgFgcEEeRwwt4MjSAg4b3JdDBvWhtF++hnYX6UKSTRzpHB33VHf/NGH5BuBld7/TzG4Iy98F
+zgZGhtexwL3hXTqYmTGiuDcjintzxYTh1NTWsXD1FqYt38Ccyk3MqazmLwvW1tfvlZvF8OJelPfv
+xfABvSjr15Oh/fIZWphPSUEeeTlZaTwb6Uh1dU6dO3VOeN/72ev2LfPEdWFbT9jO2VsnXp747iRs
+7wB769Zvh4NT/znaLlofNknYX8Trjx1V2LvN/vugvl7Cuobr4/848XigwfEaLyceY0K9eHwAA/r0
+4NwjhxzgN9a8zjSs+iTglPD5EeA1osQxCXg0TC/7jpkVmtlgd1+dliilXnZWjCNKCziitKC+bPPO
+PXy4ZguL1m7hwzVbWPrpNt6v3BQ9J9Lg4rZPXjYD+/RgQO8e9O+dS7+e0atvfjYF+Tn07pFDrx5Z
+9O6RTa8e2eTnZJGfm0VedhY9cmLkZsWIxdJ7RePu1NY5teG9ps6prQ3vdU5NXV20Prz21O5b3nB5
+73ZObV0dNWFf0X7r6tfXesPjhPp1Tl3CfmoT6ieuq3/3/evV1Z8P9Z/3lkU/gvG68fOv84S6vnc5
+/lk6ztiywoxNHA78xcwc+LW73wcMiicDd19tZgND3aHAyoRtK0PZPonDzK4ErgQYNmxYisOXpvTN
+y6GivIiK8qJ9ynfX1LGmeieVm7bzycYdrNuyi3Wbd7Juyy7Wb93Nh2u3smHbbjZt392qH5rsmJGT
+FSMnK3qPxYzsmBEzIytmxAxiZhD9b59bZ/v9dUnCX6/hx7Dhj+beH1Lqy9ItKxada5ZF556VFX3O
+iv9bxNcn/Ntkhzqx2N66udmx8G9mCe/sUxbfJmZ7y6MX9fuKxRLKEurH92Hxz7b3s4X9mRkWzin6
+vqg/RmJdS9h//HuNNSiPf+f12xCtI3y2+PqEY1nC/urLQt24xDJrsK+oXuJytGFz+yLheIn73/s5
+vqKJ8gbHycpK/R9T6UocJ7r7qpAcpprZB83UbexfYb//t4bkcx9EbRztE6a0l9zsGMP692zxuRB3
+Z+uuGjbvrGHLzj1s21XD1l21bNtVw849tezYU8uO3bXsrq1jd00du2rqqKmtY0+ts6e2rv4v6JqE
+2xu1dXsThONY4n9SCT8+8R+e+I9J9CNIgx/SfX9Us2OxfX6U6z9nxaLl+A94VrRNTpbVb5OdFd8u
+RnbW3h/1nKx99xmvlxOL1SeB7ITjqR1JOlpaEoe7rwrv68zsj8AxwNr4LSgzGwysC9UrgbKEzUuB
+VR0asHQYM6NPXg598nKA/HSHIyKN6PAhR8ysl5n1iX8GzgTmAVOAyaHaZODZ8HkKcJlFjgOq1b4h
+IpI+6bjiGAT8MVxeZwP/4+4vmNl04CkzuwL4GLgw1H+eqCvuEqLuuJd3fMgiIhLX4YnD3ZcCRzVS
+vh44vZFyB67pgNBERCQJGh1XRERaRYlDRERaRYlDRERaRYlDRERaRYlDRERaJSOHVTezKmDFAexi
+APBpi7UyS3c8Z+ie590dzxm653m39pw/4+7FLVXKyMRxoMxsRjJDC2eS7njO0D3PuzueM3TP807V
+OetWlYiItIoSh4iItIoSR+PuS3cAadAdzxm653l3x3OG7nneKTlntXGIiEir6IpDRERaRYlDRERa
+RYkjgZlNNLNFZrbEzG5IdzypYmZlZvaqmS00s/lmdl0oLzKzqWa2OLz3S3es7c3MsszsPTN7LiwP
+N7N3wzk/aWa56Y6xvZlZoZk9bWYfhO/8+Ez/rs3sG+G/7Xlm9riZ5WXid21mD5rZOjObl1DW6Hcb
+5jT6efh9m2Nm49p6XCWOwMyygHuAs4HRwJfMbHR6o0qZGuBf3f0w4DjgmnCuNwAvu/tI4OWwnGmu
+AxYmLP8QuCuc80bgirRElVo/A15w91FEUxosJIO/azMbCnwdqHD3MUAWcDGZ+V0/DExsUNbUd3s2
+MDK8rgTubetBlTj2OgZY4u5L3X038AQwKc0xpYS7r3b3WeHzFqIfkqFE5/tIqPYIcF56IkwNMysF
+Pg/cH5YNOA14OlTJxHPuC5wEPADg7rvdfRMZ/l0TzTWUb2bZQE9gNRn4Xbv7G8CGBsVNfbeTgEc9
+8g5QGKbpbjUljr2GAisTlitDWUYzs3LgaOBdYFB8Wt7wPjB9kaXET4HvAHVhuT+wyd1rwnImfucj
+gCrgoXCL7v4wZXPGftfu/gnwI6KZRFcD1cBMMv+7jmvqu2233zgljr2skbKM7qtsZr2BZ4Dr3X1z
+uuNJJTM7F1jn7jMTixupmmnfeTYwDrjX3Y8GtpFBt6UaE+7pTwKGA0OAXkS3aRrKtO+6Je3237sS
+x16VQFnCcimwKk2xpJyZ5RAljcfc/Q+heG380jW8r0tXfClwIvBFM1tOdBvyNKIrkMJwOwMy8zuv
+BCrd/d2w/DRRIsnk7/pzwDJ3r3L3PcAfgBPI/O86rqnvtt1+45Q49poOjAw9L3KJGtOmpDmmlAj3
+9h8AFrr7TxJWTQEmh8+TgWc7OrZUcfcb3b3U3cuJvttX3P0rwKvABaFaRp0zgLuvAVaa2aGh6HRg
+ARn8XRPdojrOzHqG/9bj55zR33WCpr7bKcBloXfVcUB1/JZWa+nJ8QRmdg7RX6FZwIPufkeaQ0oJ
+M5sA/BWYy977/d8jaud4ChhG9H++C929YcNbl2dmpwDfcvdzzWwE0RVIEfAecIm770pnfO3NzMYS
+dQjIBZYClxP90Zix37WZ3QZcRNSD8D3g/xDdz8+o79rMHgdOIRo+fS1wC/AnGvluQxK9m6gX1nbg
+cnef0abjKnGIiEhr6FaViIi0ihKHiIi0ihKHiIi0ihKHiIi0ihKHiIi0ihKHSCPMbGt4LzezL7fz
+vr/XYPmt9ty/SKopcYg0rxxoVeIIIy03Z5/E4e4ntDImkbRS4hBp3p3A35nZ7DDHQ5aZ/beZTQ9z
+GlwF0UOFYY6T/yF6sBIz+5OZzQzzQlwZyu4kGrV1tpk9FsriVzcW9j3PzOaa2UUJ+34tYU6Nx8LD
+XJjZnWa2IMTyow7/15FuKbvlKiLd2g2Ep8wBQgKodvfxZtYD+JuZ/SXUPQYY4+7LwvI/hSd284Hp
+ZvaMu99gZl9z97GNHOt8YCzRnBkDwjZvhHVHA4cTjS30N+BEM1sA/D0wyt3dzArb/exFGqErDpHW
+OZNovJ/ZREO09CeaGAdgWkLSAPi6mb0PvEM0uNxImjcBeNzda919LfA6MD5h35XuXgfMJrqFthnY
+CdxvZucTDSMhknJKHCKtY8C17j42vIa7e/yKY1t9pWg8rM8Bx7v7UURjI+Ulse+mJI6pVAtkh7kl
+jiEa5fg84IVWnYlIGylxiDRvC9AnYflF4J/DsPSY2SFhYqSGCoCN7r7dzEYRTdEbtye+fQNvABeF
+dpRiopn7pjUVWJhPpcDdnweuJ7rNJZJyauMQad4coCbccnqYaP7ucmBWaKCuovEpSF8ArjazOcAi
+ottVcfcBc8xsVhjaPe6PwPHA+0QT7HzH3deExNOYPsCzZpZHdLXyjbadokjraHRcERFpFd2qEhGR
+VlHiEBGRVlHiEBGRVlHiEBGRVlHiEBGRVlHiEBGRVlHiEBGRVvn/y9bQMfsPBHYAAAAASUVORK5C
+YII=
 ">
 </img></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="模型预测">模型预测<a class="anchor-link" href="#模型预测">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">"Mean squared error: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">mse</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mean squared error: 589.05823077
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="模型拟合情况">模型拟合情况<a class="anchor-link" href="#模型拟合情况">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">y_pred_line</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Color map</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'viridis'</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">366</span> <span class="o">*</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.9</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">366</span> <span class="o">*</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">366</span> <span class="o">*</span> <span class="n">X</span><span class="p">,</span> <span class="n">y_pred_line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Prediction"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">"Linear Regression"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"MSE: </span><span class="si">%.2f</span><span class="s2">"</span> <span class="o">%</span> <span class="n">mse</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Day'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Temperature in Celcius'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Training data"</span><span class="p">,</span> <span class="s2">"Test data"</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'lower right'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEjCAYAAAAc4VcXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl8VOX1+PHPIQECCCIYFtkEQRSQvahFbBVUXCrWre7W
+jbpQUdSCX62ora3LTxTUFlxQVApSUIvgRhAUUJB9FwhB1ghhD5AQkpzfH/dOmCSz3CQzmUly3q9X
+Xsw895k7hwnk5NlFVTHGGGNKqlqsAzDGGFMxWQIxxhhTKpZAjDHGlIolEGOMMaViCcQYY0ypWAIx
+xhhTKpZATIUgIn1EZF2s46gMRKSliBwSkYRYx2IqNksgJq6IyM8i0q9ouarOUdX2sYipKBF5WkSO
+uT+E94vI9yJybqzj8kpVt6jqCaqaF+tYTMVmCcSYEEQkMcilj1T1BOBkYBbw33J+f2NizhKIqRBE
+5Lciss3v+c8i8qiIrBCRAyLykYgk+V2/QkSW+bUQOvtdGyYiG0UkU0TWiMjv/a79UUTmicgrIrIX
+eDpUXKqaC4wHmolIssf37y4iS933/68b+9/9/54iMlREfgHe9XC/oSKy3b3fOhHp65b3EpFFInJQ
+RHaKyAi3/FQRUV9yEpFTRGSqiOwVkVQRucfv3k+LyCQRed+9/2oR6en5G2cqNUsgpiK7HugPtAY6
+A38E5wc0MBb4E9AQGANMFZGa7us2An2AE4FngA9FpKnffc8G0oBGwHOhAhCRGsBtwB5gX7j3d+t/
+ArwHNAAmAL8vctsm7rVWwMAw92sPDAJ+pap1gUuAn937jARGqmo94DRgUpC/xgRgG3AKcC3wD18S
+cl0JTATqA1OB10N9JqbqsARiKrJRqrpDVfcCnwFd3fJ7gDGqukBV81R1HHAUOAdAVf/rvi5fVT8C
+NgC9/O67Q1VfU9VcVc0K8t7Xi8h+IMt9v2vd1ki49z8HSHRjP6aqHwM/Frl3PjBcVY+67x/qfnlA
+TaCDiFRX1Z9VdaN7n2NAWxE5WVUPqer8on8JEWkBnAcMVdVsVV0GvA3c6ldtrqp+7o6ZfAB0CfKZ
+mCrGEoipyH7xe3wEOMF93Ap4xO3u2e/+oG+B8xs2InKbX3fQfqATzliGz1YP7z1JVesDjYFVQA+/
+a6He/xRguxbexbTo+2WoaraX+6lqKvAQTlfbLhGZKCKnuK+7Czgd+ElEForIFQH+HqcAe1U1069s
+M9DM73nRzznJxmYMWAIxldNW4DlVre/3VVtVJ4hIK+AtnG6fhm4SWAWI3+s9b1Gtqrtxupae9usG
+C/r+QDrOeIn/+7Uoeluvfx83hv+o6nk4iUaBF9zyDap6I05X3AvAZBGpU+TeO4AGIlLXr6wlsN3r
+Z2CqLksgJh5VF5Ekv6+S/rb7FnCviJwtjjoicrn7Q7IOzg/ZDAARuQOnBVJqqvoT8BXwFw/v/wNO
+t9MgEUkUkQEU7j4r0d9HRNqLyIXu+E42Tpdanvt3u0VEklU1H9jv3qvQ1F1V3Qp8D/zT/aw747Rc
+xpflMzFVgyUQE48+x/lB6Pt6uiQvVtVFOOMGr+MMbKfiDrCr6hrgZZwf5DuBs4B5EYj5JZwB70Zh
+3j8HuBrnh/R+4BZgGs6YRon/PjjjH88Du3G6mhoB/+de6w+sFpFDOAPqNxTpGvO5ETgVpzXyCc74
+y4wS/v1NFSR2oJQxsSUiC4DRqvpurGMxpiSsBWJMOROR34hIE7cL63acKchfxjouY0rKZlIYU/7a
+46zJOAFnTcq1qpoe25CMKTnrwjLGGFMq1oVljDGmVCyBmCrP3RfqA7/niSKSISLT3OeNRWSaiCwX
+Z++sz93yU0Uky12U6Pu6Lcx7/dG9t6/+3X7XXnT3mlorIqN8a0VE5A/i7Pm1WkReDHHvx929rNaJ
+yCV+5fVFZLKI/OTeu8LsHGzim42BGAOHgU4iUsvdOuQiCi+kexaYoaojAcRvI0Ngo6p2pWQ+UtVB
+/gUi8mugN86AOsBc4DcishJninAPVc0QkXEi0ldVZxZ5fQfgBqAjzuryFBE53d1+ZCTwpape6+7F
+VbuE8RoTkLVAjHF8AVzuPr4RZ4NBn6Y4mw0CoKorovD+CiQBNXDWdlTHWafSBlivqhluvRTgmgCv
+HwBMdPfP2oSzVqSXiNQDzgfecWPPUdX9AV5vTIlZAjHGMRG4QZwt4TsDC/yuvQG8IyKzROQJv72m
+AE4r0oXVB0BE3pbg255f43ZJTRZnM0NU9Qecc0XS3a+vVHUtTiI4w+0uSwSuovjWJ+DsXeW/p9Y2
+t6wNzqr7d8XZQv7tANuZGFMqlkCMoaBVcSpO6+PzIte+wvlB/BZwBrBUjp/9sVFVu/p9zXFfc7e7
+gryoz4BTVbUzTmtiHICItAXOBJrj/OC/UETOV9V9wH3AR8AcnK3acwPcVwKUKU43dXfg36raDae7
+blj4T8SY8CyBGHPcVOD/Ubj7CgBV3etuWngrsBCnW6jEVHWPqvq2LXmL47v4/h6Y7267fginS823
+/fxnqnq2qp4LrMPZfr6obRRumTTH2ZpkG7BNVX0tqsk4CcWYMrMEYsxxY4FnVXWlf6G7WWFt93Fd
+nMOZtpTmDaTwwVVXAmvdx1twBs0TRaQ68BvfNRFp5P55EnA/znkdRU3F6YKrKSKtgXbAj6r6C7BV
+nIOnAPoCa0oTuzFF2SwsY1yqug1nxlJRPYDXRSQX55eut1V1oYicijsG4ld3rKqOEpG3cfa3KtqN
+9aCIXInTDbWX45siTgYuBFbidD19qaqfuddGiojvEKdnVXU9gHufnqr6lKquFpFJOMkhF3jAnYEF
+8GdgvDsDKw24o2SfjDGB2Up0Y4wxpWJdWMYYY0olZgnEPbzmR3d172oRecYtby0iC0Rkg4h85Da7
+cft2P3JX2i5wuw+MMcbESCxbIEeBC1W1C9AV6C8i5+AcvfmKqrbDOTznLrf+XcA+VW0LvOLWM8YY
+EyMxSyDqOOQ+re5+Kc5A4mS3fBzOwilwVtqOcx9PBvr69goyxhhT/mI6C0tEEoDFQFuc1b4bgf2q
+6lso5VtNC34rbVU1V0QOAA1xjvL0v+dAYCBAnTp1epxxxhnR/msYY0ylsnjx4t2qmhyuXkwTiDvN
+sKuI1Mc5i/nMQNXcP4OttC16zzeBNwF69uypixYFWgxsjDEmGBHZ7KVeXMzCcjd3m42z8ra+u+cP
+HF9NC34rbd3rJ+LMozfGGBMDsZyFley2PBCRWkA/nJW3s4Br3Wq3A/9zH091n+Ne/0ZtEYsxxsRM
+LLuwmgLj3HGQasAkVZ0mImuAiSLyd2Ap7jbU7p8fiEgqTsvjhlgEbYwxxhGzBOLuftotQHka0CtA
+eTZwXTmEZowxxoO4GAMxxhhT8VgCMcYYUyqWQIwxxpSKJRBjjDGlYueBGGNMBZSSlsqcLZvp07IV
+/dq0jUkM1gIxxpgKJiUtlcFfTueDFcsY/OV0UtJSYxKHJRBjjKlg5mzZTFaus2VgVm4uc7Z42nkk
+4iyBGGNMBdOnZStqJTojELUSE+nTslVM4rAxEGOMqWD6tWnLyP6Xx3wMxBKIMcZUQP3atA2YOMpz
+cN26sIwxppIo78F1SyDGGFNJTJ3/A+lfzSD34MFyGVy3LixjjKkEBg0axBtvvAFAfnY2zQb8LuqD
+65ZAjDGmAtu6dSstW7YsVHbb7bdz5TnnRn0MxBKIMcZUUMOGDeOFF14oeN60aVM2b95M9erVy+X9
+LYEYY0wFs2PHDpo1a1aobMqUKVx99dXlGoclEGOMqUAuuOACZs+eXfD8hBNOICMjg6SkpHKPxRKI
+McZUADt37qRJkyaFytq3b89PP/0Uo4hsGq8xxsS9iy66qFjyWLhwYUyTB1gLxBhj4tbu3btJTk4u
+Vq6qMYimOGuBGGNMHOrfv3+x5LF48eK4SR5gLRBjjIkre/bs4eSTTy5WHk+Jw8daIMYYEycuv/zy
+YsljyZIlcZk8wFogxhgTc3v37qVhw4bFyuM1cfhYC8QYY2LoiiuuKJY84rnV4c9aIMYYEwMVaawj
+GGuBGGNMObviiiuKJY9FixZVqOQB1gIxxphyE+/rOkrKWiDGGFMOrrjiimLJY+HChRU2eYC1QIwx
+Jqp27dpF48aNi5VX5MThE7MWiIi0EJFZIrJWRFaLyGC3vIGIzBCRDe6fJ7nlIiKjRCRVRFaISPdY
+xW6MMV5cfvnlxZLH/PnzK0XygNi2QHKBR1R1iYjUBRaLyAzgj8BMVX1eRIYBw4ChwKVAO/frbODf
+7p/GGBNX0tPTOeWUU4qVV5bE4ROzFoiqpqvqEvdxJrAWaAYMAMa51cYBV7mPBwDvq2M+UF9EmpZz
+2MYYE1L//v2LJY+5c+dWuuQBcTIGIiKnAt2ABUBjVU0HJ8mISCO3WjNgq9/Ltrll6UXuNRAYCBQ7
+J9gYY6Jl27ZttGjRolh5fn4+IhKDiKIv5rOwROQEYArwkKoeDFU1QFmxlK6qb6pqT1XtGWi6nDHG
+RJKqctFFFwVMHk+OOoW0/a/GIKryEdMWiIhUx0ke41X1Y7d4p4g0dVsfTYFdbvk2wP871BzYUX7R
+GmOqsowjM9mbNY8GtXqTXLsvAJs2baJNmzYB63++ti01k6qx+cBb1KvZueA1lUksZ2EJ8A6wVlVH
++F2aCtzuPr4d+J9f+W3ubKxzgAO+ri5jjImmjCMzWZ0xhO2Z41mdMYRdh1O44IILAiaPIUNv5ptN
+Z1IzyffjNY+9WfPKN+ByEssWSG/gVmCliCxzy/4PeB6YJCJ3AVuA69xrnwOXAanAEeCO8g3XGFNV
+7c2aR75mA7A59SAXnHpRwHpHjx6lRo0abNz3CpsPvAXkUU2SaFCrdzlGW35ilkBUdS6BxzUAirX1
+1JnC8EBUgzLGmAAa1OrNjszJPHhdKqsWZRW7/vrrr/PAA8d/PJ120sPUq9m5WJdXZRMXs7CMMSae
+7UxrzIVnrQx4zdfqKCq5dt9Kmzh8Yj4Lyxhj4lV+fj7nnHMOZ511VrFrEyZMQFUDJo+qwlogxhgT
+wJIlS+jRo0fAa1lZWSQlJZVzRPHHEogxxvjJy8ujZ8+eLFu2LOD1yriivLSsC8sYY1zz588nMTEx
+YPJYsGCBJY8irAVijKnyjh07RqdOnVi/fn3A67sOp5Bcu1c5RxX/rAVijKnSvv32W2rUqBEweTz4
+7CnM3HQ6qzOGkHFkZgyii2/WAjHGVEk5OTk0b96cjIyMgNfX7BpO+uEJAORrNnuz5lX6abklFbYF
+IiJXu+d1ICLDRGSSiHSNfmjGGBNZGUdmsm7Ps0ya+gI1a9YMmDymTJmCqnJynT5UE2emVWVeTV4W
+XlogT6vqxyLya+B3wAhgNHBOVCMzxpgImrL2Yz5b8xnjrn0vaB3/rdeTa/elY/KISr+avCy8jIHk
+uX9eAfxLVacANaMXkjHGRFZKWiqDR04Lmjzee+89VLXYuR3JtfvSvuFTljyC8NICSReRN4D+QE8R
+qYENvhtj4kSgbdb9HTlyhItOaxf09bYosPS8JILrgW+By1V1H3AyzjnlxhgTU0W3WS86U2rixInU
+qVMn4GvfffddVNWSRxl4aYHUA+YCiIjvoN/lUYvIGGM88t9m3X+mVGZmJvXq1Qv6ury8PKpVs46U
+svLyCc4EUtw/5+Gc0TErmkEZY4wXDWr1LjZTasyYMSGTh6pa8oiQsC0QVT3T/7mI9MIOczLGxAH/
+mVIJR7vQqE6/oHW/++47+vTpU6gs3PiJCa3EaVhVfwRsTb8xJi4k1+7Lf/9djXbNrgpaR1UDJo9Q
+4ycmvLAtEBF50O9pNaAHsDdqERljjEe7d+8mOTk56PXFixfTvXv3gNeCjZ8Y77y0QJL9vk7EGQ8Z
+EM2gjDEmnPvuuy9k8lDVoMkDAo+fmJLxMgby1/IIxBhjvPjll19o2rRp0OurVq2iY8eOYe9jK83L
+LmgCEZGXVfUREfkEKLYJvqpeHdXIjDHGj6py8cUXk5KSErJOSVSFc8ujKVQL5CP3z9fLIxBjTOWT
+kpbKnC2b6dOyFf3atC31fTZt2kSbNm2CXp88eTLXXHNNqe9vSidoAnFnW4Gz9iNHVfMBRKQaUHVP
+kTfGeJKSlsrgL6eTlZvL5DWrGNn/8hInEVWlcePGQbdch8IbIJry5WUQfRbgvxdAHeCb6IRjjKks
+5mzZTFZuLgBZubnM2bK5RK9fvnw51apVC5o8pk2bFnADRFN+vGxlUktVM31PVDVTRGpHMSZjTCXQ
+p2UrJq9ZRVZuLrUSE+nTspWn1+Xn55OQkBC2jiWO2PPSAjkiIl18T9zDpLKjF5IxpjLo16YtI/tf
+zq2du4bsvvId8pRxZCYzZ84MmTxmz55trY444qUF8jDwiYj42p8tgRujF5IxJpYiNfANThIJdQ/f
+avBjuVmccfLwkPeyVkf8CdsCUdUFwJk4iWQIcKbfALsxphLxDXx/sGIZg7+cTkpaalTfb2/WPKZN
+3MnFbTcErfPKxDbsOpxiySMOhVoHcmWQSy1EBFWdGqWYjDExEmjgu6ytkGBycnLCtjrWZjxNw9rn
+2VqNOBWqC+u6ENcUsARiTCVT2oHvkrr33nsZM2ZM0Ovjx4/npptuisp7m8gJtQ7k1mi/uYiMxTlr
+fZeqdnLLGuAsYjwV+Bm4XlX3idN+HQlcBhwB/qiqS6IdozFViW/gO1JjIEUdOHCA+vXrh6xjYx0V
+R9gxEBFJFpExIjLNfd5BRP4Yofd/D+esdX/DgJmq2g7nECvf8bmXAu3cr4HAvyMUgzHGT782bXnm
+t30jljx8s6xatGwcMnlMnz7dZlhVMF6m8b6HcyZ6C/f5BuCRSLy5qn5H8a3hBwDj3MfjgKv8yt9X
+x3ygvogE31HNGBNUSloqw2fPjPogecaRmXwx/37OOHk427buClovPz+fyy67LKqxmMjzkkAaqep/
+gHwAVT0G5EUxpsaqmu6+VzrQyC1vBmz1q7fNLStERAaKyCIRWRRq+wNjqqrynGnVqE4/bu+7Puj1
+5cuXW6ujAvOSQA674xIKICK/AjJDvyQqAv0LC7RL8Juq2lNVe4Y6K8CYqqqsW4x4MWXKlLBJQVXp
+3LlzxN/blB8vCwkfBT4D2ojItzi/9V8bxZh2ikhTVU13u6h87d5tHO9GA2gO7IhiHMZUStGcaZWb
+m0v16tVD1tm6dSvNmzeP2Hua2PGykHARcAHwG2Aw0EFVl0UxpqnA7e7j24H/+ZXfJo5zgAO+ri5j
+jHdetxgpqQcffDBs8lBVSx6VSKiFhDcCCar6oarmAMvd8rtFJFNVPwr2Wq9EZALwW+BkEdkGDAee
+ByaJyF3AFo6vR/kcZwpvKs403jvK+v7GVFXBthjJODKzxCf07dq1i8aNG4esM2fOHM4777xSxWri
+lwQ7wUtElgC/VdWDRcrr40yz7VEO8ZVJz549ddGiRbEOw5gKwbcvVb5mU02S6Jg8ImQSUVWaNWtG
+enrojoCSnhJoYk9EFqtqz3D1QnVhJRZNHgCquh8I3U41xlQ4e7Pmka/ORtv5ms3erHlB686bN49q
+1aqFTB7z58+35FHJhRpEryEitVX1iH+hiJwA1IxuWMaY8tagVm/SD00paIE0qNUbKLw7b++mzahd
+O/xxQJY4qoZQLZCxwH9FpGDEy338H+DdaAdmjClfybX70jF5BM3q3lzQfeW/ZuSWRx8Nmzy2bt1q
+yaMKCbUX1osicgRYICK+eseA51X19XKJzhgTMV7O+Uiu3bfQuMecLZvJ3L2HrcP/FvLeIkJ+fn5E
+4zXxL+ggeqFKzsC5qOq+6IcUOTaIbozD15Lwrf3wMn03NzeXXr/5DUu//z5kvcOHD3vq1jIVRyQG
+0Quo6v6KljyMMccFWn3uf5RsUXPnzqV69eohk8eNN96IqgZMHqHubSoPLyvRjTEVXNHV550bH2B1
+xjPkazbph6YUjHns27ePBg0ahL3fyvSn6NTkmYDX/KcD+9/bVD6eWiDGmIrv7GYt+G2r1ozsfzmd
+Gq0qNGV3z5G5jBw5MmzyuO7uk5j1c2ca1zs/aJ2STAc2FZunFoiI9MI54KmgvrtDrzEmzqWkpfLg
+F1PJzlOSEoSbzupcaMruto3Qt9/TYe8zN/V26tSpQbN6fwjZogg2HdhUPmETiIi8B3QAlnF8G3fF
+mc5rjIlzX6fNJTvPmSyTnae8t/wbPmwzkDYn/JO7b3+UGdPXhr3HrJ87c1R/4NjRJJrxh5B1fdOB
+S7oliql4vLRAzsHZQNHm6BlTAXVM3s6n1RLJzXf+uy/cfpDn3nmbJ+++J+xrc3NzSd3/HNszxwPH
+u6TCJYWi04FN5eRlDGQ1cHK0AzHGRMdl7c7hzJN/ASB3/342DHk8bPLo1q0bqkpCQgINavWmmiQB
+WJeUKcRLC+REYK2IzAeO+gpV9eqoRWWMiZjk2n25ueNeBk14l4ypX4Stn5+fX+gwKOuSMsF4SSD/
+jHoUxpiomT9/Pn849/qw9V599VUGDx4c8Jp1SZlAwiYQVbWVQMZUQHv37mXATTcy96uvw9a1/atM
+aQQdA3GPr0VE9onIXr+vfSKyt/xCNMaUhKry/vvv07Bhw7DJ44MPPrDkYUotVAvkAvdPG0A3poJY
+u3Yt559/Prt37w5b1xKHKaugLRDftF1VzQv0VX4hGmPCOXLkCEOHDqVDhw5hk8eCle9b8jARYXth
+GRPnwm3DPn36dK644gpP97LEYSLJ9sIyJo75H+g0+MvppKSlFlzbtm0b/fv395Q8Pl/TiV2HU6IZ
+qqmCPCUQEWkuIhe4j2uKSJ3ohmWMgcDbsOfm5jJixAhatGjBV199FfYeP+1+hp6tXg04Dde2XTdl
+4WUvrDuBQTgLCk8DWgH/AvpFNzRjTNFt2Bvu3sspp5xCRkZG2Nd+nbqei05rF/S6bbtuyspLC+RB
+nP2wDgKo6nqgUTSDMqaiSklLZfjsmYW6msqiX5u23NG1O61r1uSEL1MYfN31YZPHpZdeiqqGTR5p
++161bddNmXgZRM9W1Rzf1gYikgBI6JcYU/X4Hxs7ec0qT8fGhjNj4wZeGT2aHR942/zayyC5f8vD
+x/a4MqXhpQUyT0T+AiS54yAfAdOiG5YxFU+g8YqyWLNmDXdcOcBT8vj+++89z7DyP/AJoE710637
+ypSKlwTyFyAT+AkYDMwEnohmUMbEu0BdVX1atqJWotOor5WYSJ+WrUp17yNHjvD444/TsWNHtq8J
+f1aHqnLuued6vn/R3XXbnPSQJQ9TKhLqtxa3u2qsqt5efiFFTs+ePXXRokWxDsNUMv5dVbUSEwt1
+VYVbs+GTcWRmwN1tp02bxi233MKBAwfCxjF9zSoW7PyFzo0P0KnRqhLtlBvs/Y0BEJHFqtozXL2Q
+YyCqmiciTUWkuqoei1x4xlRcgbqqfMmiX5u2Ycc9As1+ytrdjsGDB/Ppp596imHGxg0FSaxGQi4D
+e8yle1PvM6lsd10TCV66sNKAOSLyuIg86PuKdmDGxKuydlX5j0Hk5GTx0ksv0qpVK0/JQ1VR1UJJ
+LCcvkdW7mtlMKlPuvCSQDGAGUBtI9vsypkrq16YtI/tfzq2du5ZqppVvDGL14iwGXr6Fl54Ov936
+Vbc1LLSS3D+J1UjIpWOj7TaTypQ7L+eB/LU8AvFKRPoDI4EE4G1VfT7GIZkqxus4RzDVsrry9vBm
+jB+3wlP9n3Y/U2yswpfE5mzZ7I6BHLXxDFPuQg6iA4jIDKBYJVW9OFpBhYglAVgPXARsAxYCN6rq
+mkD1bRDdRFpKWioPfjGV7DwlKUEYdemVAZNIoEFqVeW1MX/hLw+/ytHs3LDvtX79etq1C74Y0Jho
+icgguutJv8dJwDX4nY1eznoBqaqaBiAiE4EBQMAEYkykfZ02l+w85/ep7Dzl67S5xRJIoEHyXZua
+cPefbmT+vJWe3sd2zTUVgZcurAVFir71nVYYA82ArX7PtwFn+1cQkYHAQICWLVuWX2SmSuiYvJ2p
+CQnk5FWnRsIxOiZvL1bHf5D88OEjPDHiad4aNdfT/fPz8/Ht+gBl7y4zJpq8bKZYz+9pNaAH0DRq
+EYUJJ0BZoV/VVPVN4E1wurDKIyhTdVzW7hz2Zo1g1a5GdGq0i8vaDSlWJ7FaXSCB72cc4LWnM9i1
+I/y+WOeddx5z5swpVBaNrVGMiSQvXVircX5IC5ALbALuiWZQIWwDWvg9bw7siFEspgpKrt2XWzrj
+jm/cUmzQOuPITBatfZNRT2/l+xmHPd1zxsYNARNDqPUmxsQDLwmkTdFFhCISq5MMFwLtRKQ1sB24
+AbgpRrGYKirYIrxjx47x0osv8PLffyLfw6HPTQbdS612bYMmhqJbuZd2axRjosVLIlgAdC9S9mOA
+sqhT1VwRGQR8hTONd6yqri7vOIwpau7cudx3332sWrXKU/0Ob7xakBg6Nz7Auj3Phpyqa2MgJh4F
+TSAi0ghnrKOWiJzF8fGHejiLCmNCVT8HPo/V+xvjb/fu3QwdOpSxY8d6qp+bm0tCQgJT1n7Md5vX
+0/MUoWHtZ9ieGfhQJy9boxgTK6FaIJcDd+KMM/zLrzwTiKvFhcaUt/z8fN577z3+8pe/sGfPnrD1
+O/XsycqFCwFnnKRh7WcYcEY2QgL56vR3+bYiscWApqIImkBU9V3gXRG5XlUnlWNMxsS1b398iyEP
+/p0lC7Z4qt965P/j6s5dC577T/NV8nB6Y/NsKxJT4XhZBzJJRC4BOuIsJPSV/yOagRkTbw4fPszQ
+J+/kjVe9/T7VYugjJJ7SlBrVqrH1wAFS0lLp16YtDWr1Jv3QFPI1m2qSRIt6fyQ3P9O2IjEVjpd1
+IP8C6gPnA+/irESfH+W4jIkJ3xYkq3Z1YsH2g3RM3s5l7c7h+xmHePDBB9myxVurQ1VJSUvlPytX
+8P22LczevIkF27e6azn60jF5hJ3HYSo8L7OwzlPVziKyXFX/KiIvAlOiHZgx5c23BcmS9Ma8ubgm
+OXmJTDlwkJe+vonVc3d5uof/SvJ+bZwpujmbnTEO/7Ucdh6HqQy8bOfuOzw5W0SauM9PjVpExsSI
+b2xi9a6plvpUAAAfmUlEQVRmHM0R9qd8w6a/v+IpeTz55JOoaqFtSCByx9waE4+8tEA+F5H6wP8D
+lgF5wLioRmVMDPjGJmrtWMWOl74gJ32np9eF2vjQ1nKYyizcmejVgF/5NlQUkVpALVXdW07xlYlt
+525KYvfu3Tw45BYmfPCVp/p79uwhL2mp57EMO4fcVBRet3MP2YWlqvk4hzf5nmdVlORhjFf5+fm8
+/fbbtG/f3nPy2HU4hbykpazOGML2zPGszhhCxpGZQev7xle81DWmovAyBjJDRAZEPRJjYmDlypX0
+6dOHe+65h717w/9u9NPuZ9h1OIXk2n0LrecIdx55SeoaU1F4SSCDgE9EJEtE9orIPhGxVoip0A4d
+OsRjjz1Gt27d+P7778PWnzhxIqpK+4ZPFXQ/+c42B8IuAixJXWMqCi+D6CdHPQpjyomq8umnnzJ4
+8GC2bt0a/gUUHiQvfMCT9/UcybVt7YepfMKeiQ4gIjfgbOv+DxFpDjRW1cVRj66MbBDd+Pv555/5
+85//zLRp0zzVz8/PZ+amjQUJAyg44KlWYqId8GQqrYgMors3eh24ALjVLToCjC5beMZEVsaRmazb
+82zAwemcnByef/55OnTo4Cl5vPXWW6gqMzdtZPCX0/lgxTIGfzmd/6xcUeyAJ2OqMi9dWL9W1e4i
+shRAVfeKSI0ox2WMZ74ZTvlafEv0b7/9lvvvv581a9Z4uteuwynszZpHxpGZzNlCoYQBzmLAcAc8
+2XRdU1V4SSDH3PUgCiAiDYH8qEZljAe+8Yg2J82nxYlFZjgd7sxjjz3GuHHe1rzm5OSw/9h3hRJR
+58bDCyWMm87qzE1ndQ65KDBUMjOmsvGSQN7A2fsqWUSeAa4HnolqVMaEkZKWyoNfTCU7T6mZkMTA
+Hm3p0iQVtCbTJ+7n739tz759+8Le58Ir6/LEyOZsOfQ6ufmZhabadmq0ipH9byqWMEKNewSarmsJ
+xFRWXrZzf19EFgP93KLrVNXbuZ3GRMnXaXPJznMmgBzNgy0HLqTN0Vb8fei3LFrwiqd7zNx0uvso
+jy0H3qLlifdQTZIKtllvUKs37RuW7ETAolu123RdU5l5aYGAc+LNMZxuLC9rR4yJqo7J25makEBO
+XnUSjx1i7fgZvPaf+eTl5YV97cGDB8lO+JGVu/6Ms7Wbc7BTbn5moam2QMCzykOx6bqmKvFyHsgT
+wE3AJzjnov9HRMar6j+jHZypnAqvpSj5NNiMIzPp0mQzA7tvZfrUoywZ+wMbdmWHfyHOSvK6detS
+l760OvEethx4C/U7DdC3zXpZxjJsq3ZTVXhpgdwC9FDVIwAi8hywGLAEYkosJS21YC3F5DWrSryW
+omBPqS2ZTBqewYJZhzy9buam04t1KZ120sPUq9k5YGvBxjKMCc9LAtlcpF4ikBadcExlN2fL5mJr
+KUqSQH458C0fvL6dD1/bS87R8Itgd+3aBXVWBO1SCtZasLEMY8LzkkCOAKtF5CucMZCLgbkiMgJA
+VYdEMT5TyfRp2YrJa1aFXUsRyOzZs/nTfeNY/9MeT/WP77JQ8i4lG8swJrywW5mIyF2hrqvqOxGN
+KIJsK5P4VNIxkF27dvHYY4/x/vvve7q/b7dcY0zpeN3KxMs03rhNEKZi6tfG29TY/Px83nrrLR5/
+/HFPazp++OEHzjnnnEiEaIzxwMssrP7A34BWbn0BVFUbRDk2U4UtW7aM++67j/nz53uq72VTUGNM
+ZHkZA3kdZ/X5SmwLExNlmZmZDB8+nJEjR5KfH/6f20+7n7EBbmNixMuiwG3AMlU9pqp5vq9oB2aq
+FlVl8uTJnHnmmbzyyithk8eK1InM+rmzHRFrTAx5aYH8BfhMRGYDR32FqjoqWkGZqiUtLY1Bgwbx
+xRdfeKqvqqzb8yz5mbZOw5hY8tICeQZnv4f6QLLflzFlcvToUZ577jk6djzTU/JQ1YKxDjsi1pjY
+89ICaaSqPSL5piJyHfA0cCbQS1UX+V17HLgLJ2k9qKpfueX9gZE4+3K9rarPRzImU75mzZrFfffd
+x7p168LW3blzJ40aNSpUZus0jIk9LwlkpohcqKrfRPB9VwFXA2P8C0WkA3AD0BE4BUgREd+WqW8A
+F+GMySwUkamq6u2UIBMVpdnTaufOnTz66KN8+OGHYeu2bt2atLTgmx7YnlPGxJaXBHIP8KiIHAFy
+iMA0XlVdCyAiRS8NACaq6lFgk4ikAr3ca6mqmua+bqJb1xJIjJR0T6udh2YwevQoXnluNgf2h9+/
+yqblGhP/vCSQk6MexXHNAP+J/9vcMoCtRcrPDnQDERkIDARo2bJlFEI0ULI9rb75fjQP3D+En5Zn
+hb3vmB+eIvVQa1LSUgvu56WlU9Ydfo0xJedlJXqeiNwAtFHVf4hIc6Axzo68QYlICtAkwKUnVPV/
+wV4WKAQCD/YH/BVVVd8E3gRnK5NQMZrS87Kn1cGDB3nqqad47bVR5OeH/lb8/cX7qd3nZ0YsrkVO
+3h6mrZvKqEuvBAjb0inrDr/GmNLxshL9daA6cD7wD5zNFUcDvwr1OlXtF+p6ENuAFn7PmwM73MfB
+yk0M9GvTlpH9Lw/4W79vTcdDDz3Ejh3hv02+abkvzjtCTl51ALLzlDlbNgOEbemUdYdfY0zpeJnG
++2tV/ROQDaCqe4EaUYpnKnCDiNQUkdZAO+BHYCHQTkRai0gNnIH2qVGKwXjUr01bnvlt30I/rDdu
+3Mhll13G9ddfHzZ5HDt2rNC03E6NdlEj4RgASQlCn5at6NOyFbUSnd9zgrV0vNQxxkSelzGQYyJS
+DbfLSEQaUsYtTUTk98BrOOtJpovIMlW9RFVXi8gknMHxXOAB36p3ERkEfIUzjXesqq4uSwwmso4e
+PcqLL77IP/7xD7KzQ58O+I93x/L4H+8oVJZcuy+3dIYGteazOqMJF7c5ryAxBWvp+IRqDRljoifo
+du4ikqiquSJyG/B7oCcwFmdfrGdUdWL5hVk6tp17+fjmm2+47777WL9+fdi6NrvKmPgXie3cfwS6
+q+r7IrIY6IczyH2dqq6KUJymAtu5cyePPPII48ePD1s3Pz8/0LRtT2yGlTHxKVQCKfjf7nYXWZeR
+ASAvL48xY8bwf//3fxw4cCBk3dWrV9OhQ4eQdTKOzAy6otxmWBkTv0IlkGQRCXpcraqOiEI8Js4t
+WbKEe++9l4ULF4as1+OclnwxcyzJtcMnj9UZQ8jXbNIPTaFj8ohCScRmWBkTv0LNwkoATgDqBvky
+VcjBgwcZPHgwv/rVr8Imj1k/d+bFCUmetlnfmzWPfC28q64/m2FlTPwK1QJJV9Vnyy0SU65CdRv5
+U1UmTZrEww8/THp6esh7ZmZmsv3oCLZnOmMi+ZrNJ2unsTpjIee3Op1rzry62Gsa1OpN+qEp5Gt2
+wF11bYaVMfHL0xiIqVzCdRv5pKam8sADD/D111+HvN+ECRO44YYbAGhQ7XhCWP7LaYxZ3IScvES+
+2rgB+LhYEvGyq67XM9SNMeUrVBeWbXNaSYXrNjp69CjPPvssHTp0CJk8rrrqKlS1IHnA8YTQrO7N
+pO7tTk6e8ztKTl4i320OPM03uXZf2jd8ynbWNaaCCZpA3BXnphIKdRhTSkoKZ511FsOHD+fYsWMB
+X3/XXXeRn5/PJ598EvC6LyFc2Lo7NRKcAfAaCbmc3+r0gPWNMRWTl5XoppIJ1G30yy+/MGTIECZM
+mBDyteHWc/iv2XC6qz7mu83rg46BGGMqrqAr0SsDW4keXl5eHqNHj+bhhx8O2uIA2LFjB02bNg15
+L/81G7USE23NhjEVlNeV6F42UzSV1KJFizj77LMZNGhQ0OTx3HPPoaphkwcEXrNhjKm8rAurCjpw
+4ABPPvkkr7/+esh6obqrAm0v4uWMEGNM5WEJpApRVT766CNuvPHGkPUyMzM54YQTgl4vur3Isxe0
+oFOjVXRp0tvWbBhThVgXVhWxYcMGLrzwwpDJ46OPPkJVQyYPKN5V9UXqF2zPHM/qjCF0abK52Bkh
+xpjKyRJIJZednc3TTz/N6aefzuzZswPWueyyy1BVrr/+esBZaLhuz7MBtyFJSUtl64ED1Kjm/NOp
+maB0SHbGOgKtKTHGVF7WhVWJff3111xyySUBrz333HOkpqby5ptvkph4/J9BqFXq/l1XNRIS+G2r
+1lx+OjSsvZN8Lb6mxBhTuVkCqYTS09O54447+Oqrr4pdW758OZ07dw762kCr1H0JxL/rKicvjxYn
+nsg1Z/Yl48iJnvbVMsZULtaFVYnk5eUxatQoTjnllGLJ45///CeqGjJ5QOhV6sF2xrWtSIypmmwh
+YSWxaNEifvWrXxUrb968OZs3b6ZaNe+/K4Q74MlmWZnSOHbsGNu2bSM7OzvWoRhXUlISzZs3p3r1
+6oXKvS4ktARSwe3fv59rrrmGb775pti1nTt30qhRoxhEZUxxmzZtom7dujRs2LDUxxubyFFV9uzZ
+Q2ZmJq1bty50zVaiV3Kqyttvv81JJ51ULHl89tlnqKolDxNXsrOzLXnEERGhYcOGZWoR2iB6BbR+
+/Xrat29frPymm27iww8/tP+gJm7Zv834Utbvh7VAKpDs7Gx69uwZMHkcPnyY8ePHl/gfREpaKsNn
+zyQlLTVSYRoTd/bs2UPXrl3p2rUrTZo0oVmzZgXPc3JyPN3jjjvuYN26dSHrvPHGG4wfPz4SIReS
+kpLCVVddFbLOkiVL+PLLLyP+3qFYC6SCeOedd7j77ruLla9YsYKzzjqrVPcsuiWJ7Z5rKquGDRuy
+bNkyAJ5++mlOOOEEHn300UJ1VBVVDTrh5N133w37Pg888EDZgy2lJUuWsGrVKvr3719u72ktkDi3
+efNmRKRY8nj55ZdR1VInD7Ddc41JTU2lU6dO3HvvvXTv3p309HQGDhxIz5496dixI88++2xB3fPO
+O49ly5aRm5tL/fr1GTZsGF26dOHcc89l165dADz55JO8+uqrBfWHDRtGr169aN++Pd9//z3g9BZc
+c801dOnShRtvvJGePXsWJDd/06dPp3379px33nn873//KyifP38+5557Lt26daN3795s2LCBrKws
+nn32WcaPH0/Xrl2ZPHlywHqRZgkkTuXm5tK8eXNOPfXUQuVnnHEGOTk5DBkypMzvEWxdhzHxItS2
+OpGyZs0a7rrrLpYuXUqzZs14/vnnWbRoEcuXL2fGjBmsWbOm2GsOHDjAb37zG5YvX865557L2LFj
+A95bVfnxxx956aWXCpLRa6+9RpMmTVi+fDnDhg1j6dKlxV535MgR/vSnP/H5558zZ84cduzYUXDt
+zDPPZO7cuSxdupS//vWvPPnkk9SqVYunnnqKm2++mWXLlnHttdcGrBdp1oUVh0aOHMlDDz1UrNzL
+oU4l0a9NW9s918StUNvqRNJpp51WaA3VhAkTeOedd8jNzWXHjh2sWbOGDh06FHpNrVq1uPTSSwHo
+0aMHc+bMCXjvq6++uqDOzz//DMDcuXMZOnQoAF26dKFjx47FXrdmzRpOP/10TjvtNABuvvlm3n//
+fcCZun/bbbexcePGkH8vr/XKwlogcWTjxo2ISLHkMW3aNM+HOpVUvzZtbfdcE5cCbasTDXXq1Cl4
+vGHDBkaOHMk333zDihUr6N+/f8BprjVq1Ch4nJCQQK7bFVxUzZo1i9XxuvYu2ISYJ554gksuuYRV
+q1bx6aefBp2G67VeWVgCiQO+g5vati38Q/z2228nLy+Pyy+/PEaRGRM7obbViZaDBw9St25d6tWr
+R3p6esD95MrqvPPOY9KkSQCsXLkyYBdZhw4dWL9+PZs2bUJVmTBhQsG1AwcO0KxZMwDee++9gvK6
+deuSmZkZtl4kWQKJsWHDhpGQkFCsfN++fbz33nsl2oLEmMokuXZfOiaPoFndm6PWfVVU9+7d6dCh
+A506deKee+6hd+/IJ60///nPbN++nc6dO/Pyyy/TqVMnTjzxxEJ1ateuzejRo7n00kvp06cPbdq0
+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
+AjHGGFMq/x8qcbj4iirNvQAAAABJRU5ErkJggg==
+">
+</img></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="sklearn实现">sklearn实现<a class="anchor-link" href="#sklearn实现">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Reference:">Reference:<a class="anchor-link" href="#Reference:">¶</a></h1><ul>
+<li><a href="https://millearninggroup.github.io/Stanford-CS229-CN/translation/cs229-notes1-cn/">cs229 Note1</a></li>
+<li><a href="http://www.cnblogs.com/pinard/p/6004041.html">线性回归原理小结</a></li>
+<li><a href="http://www.cnblogs.com/pinard/p/6026343.html">scikit-learn 线性回归算法库小结</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -1135,7 +2283,7 @@ l6SGjLskNWTcJakh4y5JDf0vZB9FlJ1A1boAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span></span> 
 </pre></div>
 </div>
 </div>

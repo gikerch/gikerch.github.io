@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <title>Weizhou's Blog</title>
+        <meta charset="utf-8" />
+        <link href="https://gikerch.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Weizhou's Blog Full Atom Feed" />
+        <link href="https://gikerch.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Weizhou's Blog Categories Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://gikerch.github.io/">Weizhou's Blog <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content">
+<h2>Articles in the posts category</h2>
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://gikerch.github.io/first-post.html" rel="bookmark" title="Permalink to 回归及其Python实现">回归及其Python实现</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2016-06-08T20:00:00+02:00"> 周三 08 六月 2016 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://gikerch.github.io/author/me.html">me</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="模型">模型<a class="anchor-link" href="#模型">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+h_\theta(x^{(i)}) &amp;= \theta_0 + \theta_1x_1+ \theta_2 x_2 +\theta_n x_n\\
+&amp;=(x^{(i)})^T \theta
+\end{align}
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="学习策略">学习策略<a class="anchor-link" href="#学习策略">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最小化训练样本的真实值与预测值的误差</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>目标函数：
+$$J(\theta)=\frac {1}{2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其中，<code>m</code>为训练样本数量</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><a href="https://millearninggroup.github.io/Stanford-CS229-CN/translation/cs229-notes1-cn/">基于极大似然估计的推导</a></strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="学习算法">学习算法<a class="anchor-link" href="#学习算法">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="正规方程">正规方程<a class="anchor-link" href="#正规方程">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\theta= (X^TX )^{-1}X^T\overset{\rightarrow} y$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="梯度下降">梯度下降<a class="anchor-link" href="#梯度下降">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>代价函数偏导数的推导：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假设只有一个样本(x,y)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="" src="https://millearninggroup.github.io/Stanford-CS229-CN/assets/image/notes1-LMS-1.jpg" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>推广到 <code>m</code> 个样本的偏导数：
+$$\frac{\partial}{\partial \theta_j}J(\theta)= \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python实现">Python实现<a class="anchor-link" href="#Python实现">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input"> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
